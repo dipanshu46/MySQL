@@ -13,3 +13,4 @@ Installation guide (file) :- installation.md
 Course Content Flow according to the repository...
 
 1. introduction.md
+2. SQL_Commands.md
