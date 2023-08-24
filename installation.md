@@ -1,9 +1,44 @@
 # Install MySQL server
-### ON Windows :
+## ON Windows :
+1. Visit the official Oracle website i.e. mysql.com or click this link: https://www.mysql.com/
+2. Click on the Downloads tab.
+3. Scroll Down and click on MySQL Community (GPL) Downloads.
+4. Click on MySQL Installer for Windows.
+5. Latest versions will be available to download. Click on Download button and then click on No thanks, just start my download link below.
+6. Open the installer after installation is completed.
+7. Once the installer is opened, it'll ask choose a setup type, Select on Custom type and click Next.
+8. Expand the MySQL Servers and choose the latest version available.
+![Alt text](<img/Screenshot from 2023-08-24 18-43-15.png>)
+    After clicking on it, Click on the arrow pointing towards right to move it to the products to be installed list.
+9. Expand The Application section.
+10. Expand the workbench section and select the latest version available and click the arrow pointing to the right.
+11. Do the same steps for the MySQL Shell section inside the Application option. Expand it choose the latest version and click on the arrow pointing towards right.
 
+NOTE: Your Products to be installed section should contain these three with their latest version. 
+- MySQL Server
+- MySQL Workbench
+- MySQL Shell 
 
+12. Click Next. Click on Execute to downlad and install.
+13. Once the download is completed, click on Next. You'll see the product configuration page. Click on Next.
+14. Go with the default configuration settings and click Next.s
+15. For Authentication Method. Select Use Strong Password Encryption for Authentication and click Next.
+16. Set the password for the root user and click on Next.
+17. Keep the default settings for the Windows Service page and click Next.
+18. Click on Execute.
+19. After Execution steps are finished, click on Finish.
+20. Click on Next and Finish to complete the setup process. After completion it will launch the mysql shell and mysql workbench.
 
-### ON Linux :
+Enter the password for the root user and your workbench will be running.
+To start the server, Open command prompt, change irectory to the folder where the mysql files are present. Path:- This PC -> Local Disk C: -> Program Files -> MySQL -> MySQL Server 8.0 -> bin.
+After to the directory, enter the following command :
+    
+    > mysql -u root -p
+
+It will ask for password. Enter the password you have created for the root user.
+Now the Server has started.
+
+## ON Linux :
 1. Open Terminal (Ctrl + Alt + T)
 2. Run the following commands :- 
 
