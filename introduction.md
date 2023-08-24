@@ -27,3 +27,11 @@ It was initially developed by IBM. SQL commands help you to store, process, anal
 | 106 | Matt | Scotland | 3 |
 
 This is how a table looks like in a database. The headers i.e. player_id, name, country and goals are also known as fields of a database. Then we have columns and rows in a table as we all know. Here each row represents a record or a tuple.
+
+So you can use sql commands to query, update and insert records to your table.
+
+#### Featuers of SQL
+![Alt text](<img/Screenshot from 2023-08-24 14-18-57.png>)
+
+#### Applications of SQL
+![Alt text](<img/Screenshot from 2023-08-24 14-20-33.png>)
