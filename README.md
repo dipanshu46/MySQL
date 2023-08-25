@@ -8,9 +8,9 @@
 
 Complete the installation process if haven't already.
 
-Installation guide (file) :- installation.md
+- Installation guide (file) :- installation.md
 
 Course Content Flow according to the repository...
 
 1. introduction.md
-2. SQL_Commands.md
+2. SQL_info.md
