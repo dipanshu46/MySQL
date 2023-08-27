@@ -68,9 +68,6 @@ We can also use the in operator specify our clause -
 To select values between a given range - 
 - select * from table_name where column_name between value_1 and value_2;
 
-#### Group by clause
-To display rows grouped to a summary row that have same value for a column - 
-- select coulumn_name_1, sum/avg/count(column_name) from table_name group by column_name_1;
 
 #### Order by clause
 Sorts the result in ascending or descending order. Sorts in ascending order by default.
@@ -87,6 +84,8 @@ Try using workbench to know more about functions through its auto suggestions.
 
 To find the length of text or string -
 - select length('your_string');
+- select character_length('string');
+- select char_length('string');
 
 To repeat a string - 
 - select repeat('string', n);
@@ -94,9 +93,39 @@ n is the number of times you want to repeat the string.
 
 To uppercase every letter in a string - 
 - select upper('string');
+- select ucase('string');
 
 To lowercase every letter in a string - 
 - select lower('string');
+- select lcase('string');
+
+To reverse a string - 
+- select reverse('string');
+
+To concatenate two or more strings -
+- select concat(string_1, string_2, ..., string_n);
+
+To replace in a string - 
+- select replace(string, string_1, string_2);
+    
+    where string is the main string, string_1 is the string to be replaced, string_2 is the string to be replaced with.  
+
+To remove the leading whitespaces from a string - 
+- select ltrim(string);
+
+To remove the trailing whitespaces from a string -
+- select rtrim(string);
+
+To remove both leading and trailing whitespaces from a string -
+- select trim(string);
+
+To get the position of the first occurence of a substring in a string - 
+- select position('sub_string' in 'string');
+    
+    returns 0 if not found
+
+To get the ascii value of a character -
+- select ascii(character);
 
 To print the current date -
 - select curdate();
@@ -108,6 +137,15 @@ To print the day from the current date -
 To print the current date and time -
 - select now();
 - select current_timestamp();
+
+To print the length of the names from a table entry -
+- select length(column_name) from table_name;
+
+### Group by clause
+Group By statement groups records into summary rows and returns one record for each group.
+
+To display rows grouped to a summary row that have same value for a column - 
+- select coulumn_name_1, sum/avg/count(column_name) from table_name group by column_name_1;
 
 Example for the above commands :-
 
@@ -558,3 +596,153 @@ Example for the above commands :-
     | 2023-08-27 16:50:55 |
     +---------------------+
     1 row in set (0.00 sec)
+
+    mysql> select ucase('Dipanshu');
+    +-------------------+
+    | ucase('Dipanshu') |
+    +-------------------+
+    | DIPANSHU          |
+    +-------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select length(name) as total_length from employee_details;
+    +--------------+
+    | total_length |
+    +--------------+
+    |            5 |
+    |            5 |
+    |            5 |
+    |            5 |
+    |            4 |
+    |            4 |
+    |            8 |
+    +--------------+
+    7 rows in set (0.00 sec)
+
+    mysql> select Name, length(name) as total_length from employee_details;
+    +----------+--------------+
+    | Name     | total_length |
+    +----------+--------------+
+    | Jimmy    |            5 |
+    | Shane    |            5 |
+    | Marry    |            5 |
+    | Dwaye    |            5 |
+    | Sara     |            4 |
+    | Ammy     |            4 |
+    | Dipanshu |            8 |
+    +----------+--------------+
+    7 rows in set (0.00 sec)
+
+    mysql> select age as Age, length(age) as total_length from employee_details;
+    +------+--------------+
+    | Age  | total_length |
+    +------+--------------+
+    |   35 |            2 |
+    |   30 |            2 |
+    |   28 |            2 |
+    |   37 |            2 |
+    |   32 |            2 |
+    |   35 |            2 |
+    |   21 |            2 |
+    +------+--------------+
+    7 rows in set (0.00 sec)
+
+    mysql> select length(234) as length;
+    +--------+
+    | length |
+    +--------+
+    |      3 |
+    +--------+
+    1 row in set (0.00 sec)
+
+    mysql> select concat('India', ' ', 'is', ' ', 'in Asia.') as Sentence;
+    +-------------------+
+    | Sentence          |
+    +-------------------+
+    | India is in Asia. |
+    +-------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select reverse('Yahoo');
+    +------------------+
+    | reverse('Yahoo') |
+    +------------------+
+    | oohaY            |
+    +------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select replace('Orange is a vegetable', 'vegetable', 'fruit');
+    +--------------------------------------------------------+
+    | replace('Orange is a vegetable', 'vegetable', 'fruit') |
+    +--------------------------------------------------------+
+    | Orange is a fruit                                      |
+    +--------------------------------------------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select ltrim('      Luggage');
+    +------------------------+
+    | ltrim('      Luggage') |
+    +------------------------+
+    | Luggage                |
+    +------------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select rtrim('Luggage        ');
+    +--------------------------+
+    | rtrim('Luggage        ') |
+    +--------------------------+
+    | Luggage                  |
+    +--------------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select trim('      Whitespaces        ');
+    +-----------------------------------+
+    | trim('      Whitespaces        ') |
+    +-----------------------------------+
+    | Whitespaces                       |
+    +-----------------------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select position('fruit' in 'Orange is a fruit');
+    +------------------------------------------+
+    | position('fruit' in 'Orange is a fruit') |
+    +------------------------------------------+
+    |                                       13 |
+    +------------------------------------------+
+    1 row in set (0.00 sec)
+
+    mysql> select ascii('t');
+    +------------+
+    | ascii('t') |
+    +------------+
+    |        116 |
+    +------------+
+    1 row in set (0.00 sec)
+
+    mysql> select sex as Genders from employee_details group by sex;
+    +---------+
+    | Genders |
+    +---------+
+    | M       |
+    | F       |
+    +---------+
+    2 rows in set (0.00 sec)
+
+    mysql> select sex as Genders, count(sex) as Count from employee_details group by sex;
+    +---------+-------+
+    | Genders | Count |
+    +---------+-------+
+    | M       |     4 |
+    | F       |     3 |
+    +---------+-------+
+    2 rows in set (0.00 sec)
+
+    mysql> select sex as Genders, count(name) as Count from employee_details group b
+    y sex;
+    +---------+-------+
+    | Genders | Count |
+    +---------+-------+
+    | M       |     4 |
+    | F       |     3 |
+    +---------+-------+
+    2 rows in set (0.00 sec)
